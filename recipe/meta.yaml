@@ -10,8 +10,8 @@ package:
 source:
   fn: getopt_{{ version }}.tar.gz
   url:
-    - https://cran.r-project.org/src/contrib/getopt_{{ version }}.tar.gz
-    - https://cran.r-project.org/src/contrib/Archive/getopt/getopt_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/getopt_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/Archive/getopt/getopt_{{ version }}.tar.gz
   sha256: 1522c35b13e8546979725a68b75e3bc9d156fb06569067472405f6b8591d8654
 
 
