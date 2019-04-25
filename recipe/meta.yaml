@@ -1,4 +1,4 @@
-{% set version = '1.20.2' %}
+{% set version = '1.20.3' %}
 
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
@@ -11,19 +11,20 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/getopt_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/getopt/getopt_{{ version }}.tar.gz
-  sha256: 3d6c12d32d6cd4b2909be626e570e158b3ed960e4739510e3a251e7f172de38e
+  sha256: 531f5fdfdcd6b96a73df2b39928418de342160ac1b0043861e9ea844f9fbf57f
 
 build:
   merge_build_host: True  # [win]
   # If this is a new build for the same version, increment the build number.
   number: 0
+  noarch: generic
 
   # This is required to make R link correctly on Linux.
   rpaths:
     - lib/R/lib/
     - lib/
 
-# Suggests: testthat
+# Suggests: covr, testthat
 requirements:
   build:
     - {{posix}}zip               # [win]
@@ -47,13 +48,14 @@ test:
     # Put any additional test requirements here.
 
 about:
-  home: https://github.com/trevorld/getopt
+  home: https://github.com/trevorld/r-getopt
   license: GPL (>= 2)
   summary: Package designed to be used with Rscript to write ``#!'' shebang scripts that accept
     short and long flags/options. Many users will prefer using instead the packages
     optparse or argparse which add extra features like automatically generated help
     option and usage, support for default values, positional argument support, etc.
   license_family: GPL3
+  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2'
 
 extra:
   recipe-maintainers:
@@ -65,20 +67,21 @@ extra:
 # Package: getopt
 # Type: Package
 # Title: C-Like 'getopt' Behavior
-# Version: 1.20.2
-# Author: Allen Day. Contributions from Trevor L Davis and Roman Zenka.
-# Maintainer: Trevor L Davis <trevor.l.davis@gmail.com>
-# URL: https://github.com/trevorld/getopt
+# Version: 1.20.3
+# Authors@R: c(person("Trevor L", "Davis", role=c("aut", "cre"), email="trevor.l.davis@gmail.com"), person("Allen", "Day", role="aut", comment="Original package author"), person("Roman", "Zenka", role="ctb"))
+# URL: https://github.com/trevorld/r-getopt
 # Imports: stats
-# BugReports: https://github.com/trevorld/getopt/issues
+# BugReports: https://github.com/trevorld/r-getopt/issues
 # Description: Package designed to be used with Rscript to write ``#!'' shebang scripts that accept short and long flags/options. Many users will prefer using instead the packages optparse or argparse which add extra features like automatically generated help option and usage, support for default values, positional argument support, etc.
 # License: GPL (>= 2)
-# Suggests: testthat
-# RoxygenNote: 6.0.1
+# Suggests: covr, testthat
+# RoxygenNote: 6.1.1
 # NeedsCompilation: no
-# Packaged: 2018-02-16 04:46:12 UTC; trevorld
+# Packaged: 2019-03-22 19:27:49 UTC; trevorld
+# Author: Trevor L Davis [aut, cre], Allen Day [aut] (Original package author), Roman Zenka [ctb]
+# Maintainer: Trevor L Davis <trevor.l.davis@gmail.com>
 # Repository: CRAN
-# Date/Publication: 2018-02-16 11:18:58 UTC
+# Date/Publication: 2019-03-22 20:10:03 UTC
 
 # See
 # http://docs.continuum.io/conda/build.html for
